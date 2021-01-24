@@ -8,6 +8,7 @@ else
 fi
 
 echo "Starting $PROXY_TYPE 3proxy server."
+echo "Config file: $CONFIG_FILE"
 
 # Run 3proxy
-/etc/3proxy/3proxy /etc/3proxy/3proxy.cfg
+/etc/3proxy/3proxy "$CONFIG_FILE"

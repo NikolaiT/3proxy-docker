@@ -26,6 +26,7 @@ RUN chmod +x /etc/3proxy/3proxy
 
 # copy configuration files
 COPY 3proxy.cfg /etc/3proxy/
+COPY 3proxy-forward-chain.cfg /etc/3proxy/
 COPY .proxyauth /etc/3proxy/
 
 # add dumb-init
