@@ -4,12 +4,16 @@ build and run image
 
 ```
 docker build -t 3proxy .
+```
 
+Run the image:
+
+```
 # daemonize
-docker run -d -p 9799:9799 -p 8089:8089 3proxy
+docker run -d -p 9799:9799 -p 8089:8089 --env PROXY_TYPE=anonymous 3proxy
 
 #normal
-docker run -p 9799:9799 -p 8089:8089 3proxy
+docker run -p 9799:9799 -p 8089:8089 --env PROXY_TYPE=anonymous 3proxy
 ```
 
 kill docker image process with
@@ -18,17 +22,10 @@ kill docker image process with
 docker stop $(docker ps -q --filter ancestor=3proxy)
 ```
 
-Test with:
+Test that the proxy works with:
 
 ```
-
-IP=127.0.0.1
-
-curl -x socks5://test:testXX@${IP}:8089 -v http://httpbin.org/ip
-
-curl -x socks5://test:testXX@${IP}:8089 http://httpbin.org/ip
-
-curl http://httpbin.org/ip
+curl -x socks5://test:testXX@$127.0.0.1:8089 -v http://httpbin.org/ip
 ```
 
 Connect into container:

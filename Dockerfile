@@ -1,5 +1,10 @@
 FROM alpine:latest
 
+# `anonymous` run a anonymous proxy server that clients can connect to
+# `forward` run a local proxy server that forwards connections to a upstream proxy
+ENV PROXY_TYPE=anonymous
+
+# The version of 3proxy
 ARG VERSION=0.9.3
 
 RUN apk add --update alpine-sdk wget bash && \
