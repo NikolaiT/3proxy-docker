@@ -1,0 +1,4 @@
+## Add users in below formats:
+#user:CL:password
+#user:CR:encrypted_password
+test:CL:testXX
