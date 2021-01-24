@@ -15,13 +15,20 @@ docker run -p 9799:9799 -p 8089:8089 3proxy
 kill docker image process with
 
 ```
-docker stop 3proxy
+docker stop $(docker ps -q --filter ancestor=3proxy)
 ```
 
 Test with:
 
 ```
-curl -socks5 test:testXX@0.0.0.0:8089 http://httpbin.org/ip
+
+IP=127.0.0.1
+
+curl -x socks5://test:testXX@${IP}:8089 -v http://httpbin.org/ip
+
+curl -x socks5://test:testXX@${IP}:8089 http://httpbin.org/ip
+
+curl http://httpbin.org/ip
 ```
 
 Connect into container:
