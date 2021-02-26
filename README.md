@@ -35,13 +35,13 @@ docker run -p 9799:9799 -p 8089:8089 --env PROXY_TYPE=anonymous 3proxy
 Test that the proxy works by using `curl`. Let's assume your proxy server IP address is `1.2.3.4`.
 
 ```
-curl -x socks5://test:testXX@1.2.3.4:8089 -v http://httpbin.org/ip
+curl -x socks5://test:testXX1.2.3.4:8089 -v http://httpbin.org/ip
 ```
 
 Since the proxy server also supports the `http/s` scheme, you can also use:
 
 ```
-curl -x http://test:testXX@1.2.3.4:9799 -v http://httpbin.org/ip
+curl -x http://test:testXX1.2.3.4:9799 -v http://httpbin.org/ip
 ```
 
 ### Local Forwarding Proxy
