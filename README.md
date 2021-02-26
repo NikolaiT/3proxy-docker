@@ -5,7 +5,7 @@
 In this repository, it is demonstrated how you can use 3Proxy for two different use cases:
 
 1. 3Proxy running on any remote server as anonymous proxy server. This is the classical use case, which allows clients (such as browsers or `curl`) to use the proxy server as a means to change it's IP address in order to become (somewhat) anonymous.
-2. Another use case uses 3Proxy as a local forwarding proxy. It is possible to forward network connections from one scheme to another scheme. For example, the Google Chrome browser does not support the `socks5://username:password@$1.2.3.4:8888` socks5 proxy format. But we can launch 3proxy locally as a forwarding proxy without username/password authentication and then forward the connection to a upstream proxy that requires username/password auth.
+2. Another use case uses 3Proxy as a local forwarding proxy. It is possible to forward network connections from one scheme to another scheme. For example, the Google Chrome browser does not support the `socks5://username:password@1.2.3.4:8888` socks5 proxy format. But we can launch 3proxy locally as a forwarding proxy without username/password authentication and then forward the connection to a upstream proxy that requires username/password auth.
 
 ### Installation
 
