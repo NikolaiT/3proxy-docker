@@ -29,10 +29,6 @@ COPY 3proxy.cfg /etc/3proxy/
 COPY 3proxy-forward-chain.cfg /etc/3proxy/
 COPY .proxyauth /etc/3proxy/
 
-# add dumb-init
-# RUN wget -O /usr/local/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.2.4/dumb-init_1.2.4_x86_64
-# RUN chmod +x /usr/local/bin/dumb-init
-
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
