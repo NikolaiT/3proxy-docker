@@ -1,3 +1,5 @@
+# check new stuff here: https://github.com/rb-dock8s/3proxy/blob/master/Dockerfile
+
 FROM alpine:latest
 
 # `anonymous` run a anonymous proxy server that clients can connect to
@@ -31,5 +33,7 @@ COPY .proxyauth /etc/3proxy/
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
+
+EXPOSE 9799:9799/tcp 8089:8089/tcp
 
 ENTRYPOINT ["/entrypoint.sh"]

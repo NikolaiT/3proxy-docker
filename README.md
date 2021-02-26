@@ -58,6 +58,28 @@ Test the proxy with `curl`.
 curl -x http://0.0.0.0:9799 -v http://httpbin.org/ip
 ```
 
+### Pushing to Dockerhub
+
+Login
+
+```
+docker login
+```
+
+Push
+
+```
+docker tag 3proxy tschachn/3proxy:latest
+
+docker push tschachn/3proxy:latest
+```
+
+### Running from Hub
+
+```
+docker run -p 9799:9799 -p 8089:8089 --env PROXY_TYPE=anonymous tschachn/3proxy:latest
+```
+
 ### Debug Commands
 
 Kill the running Docker image with
