@@ -31,6 +31,12 @@ COPY 3proxy.cfg /etc/3proxy/
 COPY 3proxy-forward-chain.cfg /etc/3proxy/
 COPY .proxyauth /etc/3proxy/
 
+# proxy creds
+ARG PROXY_USERNAME=test
+ARG PROXY_PASSWORD=kvi42VVs74
+
+RUN echo "$PROXY_USERNAME:CL:$PROXY_PASSWORD" >> /etc/3proxy/.proxyauth
+
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
