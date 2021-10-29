@@ -37,6 +37,8 @@ ARG PROXY_PASSWORD=kvi42VVs74
 
 RUN echo "$PROXY_USERNAME:CL:$PROXY_PASSWORD" >> /etc/3proxy/.proxyauth
 
+RUN cat /etc/3proxy/.proxyauth
+
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
