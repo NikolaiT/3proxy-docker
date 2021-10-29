@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source .env
+
 echo 'Testing socks 3proxy'
 
 curl -x "socks4a://$PROXY_USERNAME:$PROXY_PASSWORD@0.0.0.0:8089" "http://httpbin.org/ip"
