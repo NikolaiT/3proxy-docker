@@ -11,7 +11,7 @@ ARG VERSION=0.9.4
 
 RUN apk add --update alpine-sdk wget bash && \
     cd / && \
-    wget -q  https://github.com/3proxy/3proxy/releases/download/${VERSION}/3proxy-${VERSION}.zip && \
+    wget -q  https://github.com/3proxy/3proxy/releases/download/${VERSION}/3proxy-${VERSION}.tar.gz && \
     tar xzf 3proxy-${VERSION}.tar.gz && \
     cd 3proxy-${VERSION} && \
     make -f Makefile.Linux
