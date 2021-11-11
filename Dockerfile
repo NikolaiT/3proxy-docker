@@ -7,11 +7,11 @@ FROM alpine:latest
 ENV PROXY_TYPE=anonymous
 
 # The version of 3proxy
-ARG VERSION=0.9.3
+ARG VERSION=0.9.4
 
 RUN apk add --update alpine-sdk wget bash && \
     cd / && \
-    wget -q  https://github.com/z3APA3A/3proxy/releases/download/${VERSION}/3proxy-${VERSION}.tar.gz && \
+    wget -q  https://github.com/3proxy/3proxy/releases/download/${VERSION}/3proxy-${VERSION}.zip && \
     tar xzf 3proxy-${VERSION}.tar.gz && \
     cd 3proxy-${VERSION} && \
     make -f Makefile.Linux
