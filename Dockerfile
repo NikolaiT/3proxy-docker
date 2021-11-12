@@ -9,39 +9,21 @@ ENV PROXY_TYPE=anonymous
 # The version of 3proxy
 ARG VERSION=0.9.4
 
-RUN apk add --update alpine-sdk wget bash && \
+RUN apk add --update alpine-sdk wget bash git && \
     cd / && \
-    wget -q  https://github.com/3proxy/3proxy/releases/download/${VERSION}/3proxy-${VERSION}.tar.gz && \
-    tar xzf 3proxy-${VERSION}.tar.gz && \
-    cd 3proxy-${VERSION} && \
-    make -f Makefile.Linux
-
-# create 3proxy config dir
-RUN mkdir /etc/3proxy/
-
-# for storing logfiles
-RUN mkdir /var/log/3proxy/
-
-# copy binary
-RUN mv 3proxy-${VERSION}/bin/3proxy /etc/3proxy/
-RUN chmod +x /etc/3proxy/3proxy
-
-# copy configuration files
-COPY 3proxy.cfg /etc/3proxy/
-COPY 3proxy-forward-chain.cfg /etc/3proxy/
-COPY .proxyauth /etc/3proxy/
+    git clone https://github.com/3proxy/3proxy && \
+    cd 3proxy && ln -s Makefile.Linux Makefile && \
+    make && make install
 
 # proxy creds
 ARG PROXY_USERNAME=test
 ARG PROXY_PASSWORD=kvi42VVs74
 
-RUN echo "$PROXY_USERNAME:CL:$PROXY_PASSWORD" >> /etc/3proxy/.proxyauth
-
-RUN cat /etc/3proxy/.proxyauth
+RUN /etc/3proxy/conf/add3proxyuser.sh $PROXY_USERNAME $PROXY_PASSWORD
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-EXPOSE 9799:9799/tcp 8089:8089/tcp
+EXPOSE 1080:1080/tcp 3128:3128/tcp
 
 ENTRYPOINT ["/entrypoint.sh"]
