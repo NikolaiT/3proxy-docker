@@ -25,6 +25,8 @@ make
 
 sudo make install
 
+sleep 1
+
 # adding proxy users
 chmod +x /etc/3proxy/conf/add3proxyuser.sh
 /etc/3proxy/conf/add3proxyuser.sh $USER $PASS
